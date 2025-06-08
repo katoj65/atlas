@@ -1,0 +1,39 @@
+npm install firebase
+npm install -g firebase-tools
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBXFzZqF4RYCusRkoYpCV2ePuZPojh9bQ0",
+  authDomain: "atlas-8fef6.firebaseapp.com",
+  projectId: "atlas-8fef6",
+  storageBucket: "atlas-8fef6.firebasestorage.app",
+  messagingSenderId: "131854842895",
+  appId: "1:131854842895:web:e998b331a7964ff08e777a",
+  measurementId: "G-BVD3F12ETV"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+
+
+
+-----------------SUPABASE----------------------------
+project URL: https://xlkyvfzyvgfttnxcdtej.supabase.co
+API Key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inhsa3l2Znp5dmdmdHRueGNkdGVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkxODU4NzksImV4cCI6MjA2NDc2MTg3OX0.NTlM19q0UquLZgAdXMvMxxHhE77FAApcsEr0rK6lwS4
+
+import { createClient } from '@supabase/supabase-js'
+const supabaseUrl = 'https://xlkyvfzyvgfttnxcdtej.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+
+
