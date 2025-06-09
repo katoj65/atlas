@@ -11,6 +11,7 @@ isLoading: false,
 response:[],
 });
 
+
 onMounted(async() => {
 state.isLoading=true;
 const db=new Connection;
@@ -29,7 +30,6 @@ console.log(err);
 
 
 
-
 const changeDock = async (item)=>{
 const db=new Connection;
 await db.database().from('dock').update({
@@ -37,10 +37,8 @@ lat:item.lat,
 lng:item.lng,
 name: item.name,
 district_id: item.id
-}).eq('name',props.title).then((response)=>{
+}).eq('name',props.title).then(()=>{
 }).catch((error)=>{console.log(error);});
-
-
 
 }
 
@@ -54,7 +52,6 @@ district_id: item.id
 <VaMenuList>
 <VaMenuItem v-for="i in state.response" :key="i.id" :value="i.id" style="text-transform:capitalize;">
 <a href="#" class="text-dark p-0" style="color:black;width:100%;" @click="changeDock(i)">
-
   {{ i.name }}
 </a>
 </VaMenuItem>

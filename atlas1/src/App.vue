@@ -1,6 +1,6 @@
 <template>
   <div>
-  <index></index>
+  <router-view></router-view>
   </div>
   </template>
   <script setup>

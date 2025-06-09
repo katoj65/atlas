@@ -1,5 +1,5 @@
 {
-  "name": "atlas1",
+  "name": "atlas3",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,19 +7,9 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@meteosci/vue-maplibre": "^0.0.22",
-    "@supabase/supabase-js": "^2.50.0",
     "core-js": "^3.8.3",
-    "element-plus": "^2.10.0",
-    "material-design-icons-iconfont": "^6.7.0",
-    "ol": "^10.5.0",
-    "ol-contextmenu": "^5.5.0",
-    "ol-ext": "^4.0.32",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
-    "vue3-google-map": "^0.22.0",
-    "vue3-openlayers": "^11.6.2",
-    "vuestic-ui": "^1.10.3",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
