@@ -5,6 +5,8 @@ state: {
 count:100,
 dock:'',
 zoom:12,
+key:'AIzaSyCjNJWMrdiyB68kNLu0pPyEWuZ0IZIXvno',
+session:null,
 
 
 },

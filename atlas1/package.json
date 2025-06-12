@@ -9,6 +9,7 @@
   "dependencies": {
     "@meteosci/vue-maplibre": "^0.0.22",
     "@supabase/supabase-js": "^2.50.0",
+    "axios": "^1.9.0",
     "core-js": "^3.8.3",
     "element-plus": "^2.10.0",
     "material-design-icons-iconfont": "^6.7.0",

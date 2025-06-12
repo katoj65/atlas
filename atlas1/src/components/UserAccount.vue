@@ -1,7 +1,7 @@
 <template>
 <el-dropdown :hide-on-click="false">
-<a href="#" class="el-dropdown-link">
-<VaIcon name="person" />
+<a href="#" class="el-dropdown-link" style="color:black;">
+<VaIcon name="person" style="font-size:25px;color:black;"/>
  User name
 </a>
 <template #dropdown>

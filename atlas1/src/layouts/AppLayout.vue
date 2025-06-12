@@ -6,15 +6,16 @@
 <VaNavbar style="padding:0;background:none;">
 <template #left>
 <VaNavbarItem class="navbar-item-slot">
-<router-link to="/">
-<span style="font-size:18px;font-weight:bold;">
-<img src="@/assets/logo1.png" alt="logo" style="width: 60px; height: 20px;" class="mr-3" />
-<span v-if="store.state.dock!=''" style="text-transform:capitalize;">
 
+<span style="font-size:18px;font-weight:bold;">
+<router-link to="/"><img src="@/assets/logo1.png" alt="logo" style="width: 60px; height: 20px;" class="mr-3" /></router-link>
+
+<span v-if="title==null">
+<span v-if="store.state.dock!=''" style="text-transform:capitalize;">
 <el-dropdown trigger="click" style="padding:0;margin:0;">
-<span class="el-dropdown-link" style="padding:0;margin:0;font-size:18px;">
+<a href="#" class="el-dropdown-link" style="padding:0;margin:0;font-size:18px;color:black;">
 {{ store.state.dock.data.name+' District' }}
-</span>
+</a>
 <template #dropdown>
 <el-dropdown-menu style="width:300px;">
 <el-dropdown-item v-for="(s,key) in district.data" :key="key" style="text-transform:capitalize;">
@@ -23,14 +24,22 @@
 </el-dropdown-menu>
 </template>
 </el-dropdown>
-
+</span>
+</span>
+<span else>
+{{ title }}
+</span>
 </span>
 
-</span>
-</router-link>
 </VaNavbarItem>
 </template>
 <template #right>
+<VaNavbarItem class="navbar-item-slot">
+<router-link to="/"><VaIcon name="home" style="font-size:25px;color:black;"/></router-link>
+</VaNavbarItem>
+<VaNavbarItem class="navbar-item-slot">
+<router-link to="/notification"><VaIcon name="notifications" style="font-size:25px;color:black;"/></router-link>
+</VaNavbarItem>
 <VaNavbarItem class="navbar-item-slot">
 <user-account></user-account>
 </VaNavbarItem>
@@ -43,20 +52,19 @@
 
 
 
-
-
-
 </el-header>
 <el-container style="margin-top:40px;">
 <el-aside style="width:100px;padding-top:10px;">
 <ul>
 <li v-for="(item, index) in mainMenu" :key="index">
+<router-link :to="item.url" style="color:black;">
 <div style="text-align: center;">
 <VaIcon :name="item.icon" style="font-size:25px;"/>
 </div>
 <div style="font-size:12px;text-align:center;margin-top:7px;">
 {{ item.title }}
 </div>
+</router-link>
 </li>
 
 
@@ -85,17 +93,20 @@ const store = useStore();
 const response=reactive({data:{}});
 const district=reactive({data:{}});
 const db=new Connection;
+const props=defineProps({
+title:String
+});
 
  //menu
 const mainMenu=[
-{title:'Operations',url:'',icon:'radio_button_checked'},
-{title:'Incidents',url:'',icon:'transcribe'},
-{title:'Deployments',url:'',icon:'person'},
-{title:'Critical Assets',url:'',icon:'dataset'},
-{title:'Security Zones',url:'',icon:'incomplete_circle'},
-{title:'Reports',url:'',icon:'list_alt'},
-{title:'Training',url:'',icon:'sports_gymnastics'},
-{title:'Emergencies',url:'',icon:'person_pin_circle'},
+{title:'Operations',url:'/operations',icon:'radio_button_checked'},
+{title:'Incidents',url:'/incidents',icon:'transcribe'},
+{title:'Deployments',url:'/deployments',icon:'person'},
+{title:'Critical Assets',url:'/assets',icon:'dataset'},
+{title:'Security Zones',url:'/zones',icon:'incomplete_circle'},
+{title:'Reports',url:'/reports',icon:'list_alt'},
+{title:'Training',url:'/training',icon:'sports_gymnastics'},
+{title:'Emergencies',url:'/emergencies',icon:'person_pin_circle'},
 ];
 
 onMounted(()=>store.state.dock=response);
@@ -141,6 +152,7 @@ district.data=result.data;
 console.log(err);
 });
 });
+
 
 const changeDock = async (item)=>{
 await db.database().from('dock').update({
